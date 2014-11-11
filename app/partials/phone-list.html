@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            Filter by : <input ng-model="query"> <br>
+            Sort By : 
+                <select ng-model="sortList">
+                    <option value="id" selected>Phone Name</option>
+                    <option value="model">Model Name</option>
+                </select>
+                <!--<pre>{{phones | json}}</pre> // to see the Json array-->
+        </div>
+        <div class="col-md-8">
+            <strong ng-bind="listName"></strong>
+            <ul class="phones">
+                <li ng-repeat="phone in phones | filter : query | orderBy: sortList" class="thumbnail">
+                    <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+                    <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+                    <span ng-bind="phone.id"></span>
+                    <span ng-bind="phone.model"></span>
+                    <p ng-bind="phone.snippet"></p>
+                </li>
+            </ul>   
+        </div>
+    </div>
+</div>
