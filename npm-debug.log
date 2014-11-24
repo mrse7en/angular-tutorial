@@ -24,7 +24,7 @@
 12 error There is likely additional logging output above.
 13 error System Windows_NT 6.2.9200
 14 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "protractor"
-15 error cwd C:\Users\Mr.Se7en\angular-phonecat
+15 error cwd C:\Users\Mr.Se7en\angular-tutorial
 16 error node -v v0.10.32
 17 error npm -v 1.4.28
 18 error code ELIFECYCLE

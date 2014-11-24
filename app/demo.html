@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" ng-app="currencyExample">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="bower_components/angular/angular.js"></script>
+</head>
+<body>	
+	<script>
+	  angular.module('currencyExample', [])
+		.controller('ExampleController', ['$scope', function($scope) {
+		  $scope.amount = 1234.56;
+		}]);
+	</script>
+	<div ng-controller="ExampleController">
+	  <input type="number" ng-model="amount"> <br>
+	  default currency symbol ($): <span id="currency-default">{{amount | currency}}</span><br>
+	  custom currency identifier (MYR): <span id="currency-custom">{{amount | currency:"MYR"}}</span>
+	  no fractions (0): <span id="currency-no-fractions">{{amount | currency:"MYR":0}}</span>
+	</div>
+</body>
+</html>

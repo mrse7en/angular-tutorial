@@ -8,6 +8,12 @@
                     <option value="model">Model Name</option>
                 </select>
                 <!--<pre>{{phones | json}}</pre> // to see the Json array-->
+                {{ "lower cap string" | uppercase }}
+                {{ {foo: "bar", baz: 23} | json }}
+                {{ 1304375948024 | date }}
+                {{ 1304375948024 | date:"MM/dd/yyyy @ h:mma" }}
+                
+                
         </div>
         <div class="col-md-8">
             <strong ng-bind="listName"></strong>

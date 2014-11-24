@@ -75,10 +75,22 @@ describe("phone Cat Application",function(){
 		browser.get('app/index.html#/phones/nexus-s');
 	  });
 	
-	
+		var phoneList = element.all(by.repeater("img in phones.images"))
 	  it('should display placeholder page with phoneId', function() {
-		expect(element(by.binding('phoneId')).getText()).toBe('nexus-s');
+		expect(element(by.binding('phones.name')).getText()).toBe('Nexus S');
+		expect(phoneList.count()).toBe(4);
 	  });
+	  it("should display first img as main img", function(){
+		 expect(element(by.css('img.phone')).getAttribute('src')).toMatch('/img\/phones\/nexus-s.0.jpg/')	  
+	  });
+	  it("should swap main img if thumbnail img is clicked",function(){
+			element(by.css(".phone-thumbs li:nth-child(3) img")).click();
+			expect(element(by.css('img.phone')).getAttribute('src')).toMatch('/img\/phones\/nexus-s.2.jpg/');
+			
+			element(by.css(".phone-thumbs li:nth-child(1) img")).click();
+			expect(element(by.css('img.phone')).getAttribute('src')).toMatch('/img\/phones\/nexus-s.0.jpg/');
+			
+		});
 	});
 });
 // routing and multiple views

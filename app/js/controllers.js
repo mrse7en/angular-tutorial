@@ -27,13 +27,13 @@ phonecatApp.controller("PhoneListCtrl",["$scope","$http" ,function($scope,$http)
 
 var phonecatControllers = angular.module('phonecatControllers',[]);
 
-phonecatControllers.controller("PhoneListCtrl",["$scope","$http", function($scope, $http){
+/*phonecatControllers.controller("PhoneListCtrl",["$scope","$http", function($scope, $http){
 	$http.get("phones/phones.json").success(function(data)
 	{
 		$scope.phones = data;
 	});
-	$scope.sortList = "age";
-}]);
+	$scope.sortList = "id";
+}]);*/
 /*
 phonecatControllers.controller("PhoneDetailCtrl",["$scope","$routeParams",function($scope,$routeParams){
 	$scope.phoneId = $routeParams.phoneId;
@@ -41,8 +41,22 @@ phonecatControllers.controller("PhoneDetailCtrl",["$scope","$routeParams",functi
 
 // controller with routing
 
-phonecatControllers.controller("PhoneDetailCtrl",["$scope","$routeParams","$http",function($scope, $routeParams, $http){
-	$http.get("phones/"+$routeParams.phoneId+".json").success(function(data){
+//REST and Custom Services
+phonecatControllers.controller("PhoneListCtrl",["$scope","phoneCat", function($scope, phoneCat){
+	$scope.phones = phoneCat.query();
+	$scope.sortList = "id";
+}])
+
+phonecatControllers.controller("PhoneDetailCtrl",["$scope","$routeParams","phoneCat",function($scope, $routeParams, phoneCat){
+	/*$http.get("phones/"+$routeParams.phoneId+".json").success(function(data){
 		$scope.phones = data;	
+		$scope.mainImageUrl = data.images[0];
+	});*/
+	$scope.phones = phoneCat.get({phoneId : $routeParams.phoneId},function(phones){
+		$scope.mainImageUrl = phones.images[0];
 	});
+	
+	$scope.setImage = function(imageUrl) {
+		$scope.mainImageUrl = imageUrl;    
+	}
 }]);

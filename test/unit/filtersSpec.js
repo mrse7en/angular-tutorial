@@ -3,5 +3,11 @@
 /* jasmine specs for filters go here */
 
 describe('filter', function() {
-
+	beforeEach(module('phonecatFilters'));
+	describe("check mark",function(){
+		it('should convert boolean values to unicode checkmark or cross',inject(function(checkmarkFilter){
+			expect(checkmarkFilter(true)).toBe("yes");
+			expect(checkmarkFilter(false)).toBe("No");
+		}));
+	});
 });
